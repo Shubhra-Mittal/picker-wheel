@@ -70,23 +70,52 @@
     <script src="spin-wheel-iife.js"></script>
     <script src="script-prototype.js"></script>
     <script>
-      // Panel Toggle Script
-      const toggleBtn = document.getElementById("togglePanelBtn");
-      const editPanel = document.getElementById("editPanel");
-      const wheelWrapper = document.querySelector(".wheel-wrapper");
+  const toggleBtn = document.getElementById("togglePanelBtn");
+  const editPanel = document.getElementById("editPanel");
+  const wheelWrapper = document.querySelector(".wheel-wrapper");
 
-      let panelVisible = false;
-      toggleBtn.addEventListener("click", () => {
-        panelVisible = !panelVisible;
-        if (panelVisible) {
-          editPanel.classList.add("visible");
-          wheelWrapper.classList.remove("centered");
-        } else {
-          editPanel.classList.remove("visible");
-          wheelWrapper.classList.add("centered");
-        }
-      });
-    </script>
+  let panelVisible = false;
+
+  function togglePanel() {
+    panelVisible = !panelVisible;
+
+    if (window.innerWidth > 768) {
+      // ---- Desktop behavior ----
+      if (panelVisible) {
+        editPanel.classList.add("visible");
+        wheelWrapper.classList.remove("centered"); // shift wheel
+      } else {
+        editPanel.classList.remove("visible");
+        wheelWrapper.classList.add("centered"); // recenter wheel
+      }
+    } else {
+      // ---- Mobile behavior ----
+      if (panelVisible) {
+        editPanel.classList.add("visible"); // just show
+      } else {
+        editPanel.classList.remove("visible"); // just hide
+      }
+      // Wheel stays constant on mobile
+      wheelWrapper.classList.add("centered"); 
+    }
+  }
+
+  toggleBtn.addEventListener("click", togglePanel);
+
+  // Reset behavior if screen is resized (e.g. rotate phone)
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      wheelWrapper.classList.add("centered");
+      editPanel.classList.remove("visible");
+      panelVisible = false;
+    } else {
+      wheelWrapper.classList.add("centered");
+      editPanel.classList.remove("visible");
+      panelVisible = false;
+    }
+  });
+</script>
+
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
