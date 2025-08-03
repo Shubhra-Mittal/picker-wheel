@@ -436,7 +436,7 @@ body {
     margin: 15px auto;
     transform: none !important; /* no sliding */
     display: none; /* hidden by default */
-    margin-top: 60px; 
+    margin-top: 30px; 
   }
   .edit-panel.visible {
     display: flex; /* just appears */
