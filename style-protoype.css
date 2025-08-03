@@ -416,7 +416,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
-    width: auto;
+    width: 100px;
     height: auto;
     padding: 20px 6px;        /* ✅ smaller button */
     border-radius: 6px;
