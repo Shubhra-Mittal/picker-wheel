@@ -393,13 +393,13 @@ body {
 
   /* WHEEL FIX */
   .wheel-wrapper {
-    width: 85vw;
-    height: 85vw;
-    max-width: 360px;
-    max-height: 360px;
-    margin: 0 auto 20px auto;
-    margin-left: -50px;       /* ✅ nudge left */
-  }
+  width: 80vw;          /* smaller than before */
+  height: 80vw;         /* keep square */
+  max-width: 320px;     /* optional safety */
+  max-height: 320px;
+  margin: 0 auto 20px auto; /* true center */
+  transform: none !important;
+}
 
   .wheel-container {
     margin: 0 auto;
