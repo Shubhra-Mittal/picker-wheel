@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#998ded" />
+    <meta charset="UTF-8" />
+    <title>Picker Wheel</title>
+    <link rel="stylesheet" href="style-protoype.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1 class="site-title">picker wheel</h1>
+      <img src="assets/user-icon.png" alt="User" class="user-icon" />
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <main class="main-container">
+      <!-- Wheel Section -->
+      <div class="wheel-wrapper centered">
+        <div class="pointer"></div>
+        <div class="wheel-container"></div>
+        <!-- Spin Button -->
+        <button id="spinButton" class="spin-button">Spin</button>
+      </div>
+
+      <!-- Edit List Panel -->
+      <div class="edit-panel" id="editPanel">
+        <h2 class="panel-title">edit list</h2>
+        <ul id="rewardList" class="reward-list"></ul>
+        <input
+          type="text"
+          id="newRewardInput"
+          placeholder="Add new item"
+          class="input-bar"
+        />
+      </div>
+
+      <!-- Toggle Button -->
+      <button id="togglePanelBtn" class="toggle-btn"></button>
+    </main>
+
+    <!-- Clouds -->
+    <div class="cloud-layer">
+      <img src="assets/cloud.png" class="cloud cloud-a" alt="Cloud" />
+      <img src="assets/cloud.png" class="cloud cloud-b" alt="Cloud" />
+      <img src="assets/cloud.png" class="cloud cloud-c" alt="Cloud" />
+    </div>
+
+    <!-- Popups -->
+    <div id="winPopupModal" class="popup-modal">
+      <div class="popup-content">
+        <button id="closeWinPopup" class="close-btn">✕</button>
+        <h3>Your pick is...</h3>
+        <h1 id="rewardText"></h1>
+        <p>Keep shining ✨</p>
+        <button id="removeRewardBtn" class="remove-btn">
+          Remove this reward
+        </button>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="spin-wheel-iife.js"></script>
+    <script src="script-prototype.js"></script>
+    <script>
+      // Panel Toggle Script
+      const toggleBtn = document.getElementById("togglePanelBtn");
+      const editPanel = document.getElementById("editPanel");
+      const wheelWrapper = document.querySelector(".wheel-wrapper");
+
+      let panelVisible = false;
+      toggleBtn.addEventListener("click", () => {
+        panelVisible = !panelVisible;
+        if (panelVisible) {
+          editPanel.classList.add("visible");
+          wheelWrapper.classList.remove("centered");
+        } else {
+          editPanel.classList.remove("visible");
+          wheelWrapper.classList.add("centered");
+        }
+      });
+    </script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(() => console.log("Service Worker registered"));
+      }
+    </script>
+  </body>
+</html>

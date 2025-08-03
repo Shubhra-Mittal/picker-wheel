@@ -1,0 +1,110 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WISH WHEEL</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <div class="site-header">
+      <img src="assets/logo.png" alt="Wish Wheel Logo" class="logo" />
+      <span class="site-title">WISH WHEEL</span>
+    </div>
+
+    <div class="wheel-wrapper">
+      <div class="pointer"></div>
+      <div class="wheel-container"></div>
+      <div class="wheel-stand-wrapper">
+        <div class="wheel-stand"></div>
+      </div>
+
+      <div class="button-group">
+        <button id="spinButton" class="spin-button">Spin My Wish ✨</button>
+        <button id="editButton" class="edit-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="black"
+          >
+            <path
+              d="M3 17.25V21h3.75l11.06-11.06-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Floating Penne -->
+    <img
+      id="penne"
+      src="assets/penne-cloud.png"
+      alt="Penne floating on cloud"
+    />
+
+    <!-- Popup Modal (Hidden at first) -->
+    <div id="popupModal" class="popup-modal" style="display: none">
+      <div class="popup-content">
+        <span id="closePopup" class="close-button">&times;</span>
+        <h2>Edit Rewards</h2>
+        <ul id="rewardList" class="reward-list">
+          <!-- Rewards will go here -->
+        </ul>
+        <input
+          type="text"
+          id="newRewardInput"
+          placeholder="Type a new reward and press Enter"
+          class="input-bar"
+        />
+      </div>
+    </div>
+    <!-- Winning Reward Popup -->
+    <div id="winPopupModal" class="popup-modal">
+      <div class="popup-content">
+        <span id="closeWinPopup" class="close-button">&times;</span>
+        <h2>You get to...</h2>
+        <h1 id="rewardText"></h1>
+        <p class="small-message">
+          Keep shining ✨ Your journey is just beginning!
+        </p>
+      </div>
+    </div>
+
+    <script src="spin-wheel-iife.js"></script>
+    <script src="script.js"></script>
+    <div class="cloud-layer">
+      <img
+        src="assets/cloud_1.png"
+        class="static-cloud cloud-a"
+        alt="Cloud 1"
+      />
+      <img
+        src="assets/cloud_2.png"
+        class="static-cloud cloud-b"
+        alt="Cloud 2"
+      />
+      <img
+        src="assets/cloud_1.png"
+        class="static-cloud cloud-c"
+        alt="Cloud 1"
+      />
+      <img
+        src="assets/cloud_2.png"
+        class="static-cloud cloud-d"
+        alt="Cloud 2"
+      />
+      <img
+        src="assets/cloud_1.png"
+        class="static-cloud cloud-e"
+        alt="Cloud 1"
+      />
+    </div>
+    <div id="penne-dialog" class="penne-dialog">
+      <span id="typing-text"></span>
+    </div>
+    <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+  </body>
+</html>

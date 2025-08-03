@@ -1,0 +1,406 @@
+/* style.css */
+body {
+  position: relative; /* ✅ Add this */
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  background: linear-gradient(to bottom, #e6e6fa, #ffd1dc, #ffe4b5);
+  height: 100vh;
+  padding-top: 50px;
+  background: url("assets/background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 30px;
+  border-radius: 12px;
+  background: #f8b195;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.wheel-container canvas {
+  cursor: grab;
+}
+
+.wheel-container canvas:active {
+  cursor: grabbing;
+}
+
+.pointer {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid #e37473; /* pastel pink */
+  position: absolute;
+  top: -10px; /* above the wheel */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.tagline {
+  font-size: 18px;
+  color: #666;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+/* Edit Rewards Button */
+.edit-button {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  background: #ffffff; /* white background */
+  border-radius: 12px; /* cute rounded edges */
+  border: none;
+  cursor: pointer;
+  overflow: hidden; /* clean inside */
+}
+
+.edit-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Popup Modal Background */
+.popup-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Dim background */
+  z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 2px solid #000;
+  width: 500px;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column; /* 👈 organize children vertically */
+}
+/* Center text only for the winning reward popup */
+#winPopupModal .popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Reward List inside Popup */
+.reward-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  flex-grow: 1; /* 👈 allow this to take up available space */
+  overflow-y: auto;
+}
+
+.reward-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Delete Button */
+.reward-list button {
+  background-color: #888;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Input Bar */
+.input-bar {
+  width: 90%;
+  padding: 8px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px; /* 👈 prevents hugging bottom edge */
+}
+
+.small-message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+#penne {
+  position: absolute;
+  bottom: 180px; /* Push it higher */
+  right: 160px; /* Keep it towards right */
+  width: 300px; /* Slightly smaller, less than half the wheel */
+  animation: float 6s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+.wheel-wrapper {
+  position: relative;
+  width: 500px; /* your desired wheel size */
+  height: 500px;
+  margin: 0 auto;
+  transform: translate(-50%, 50px);
+}
+
+.wheel-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.wheel-stand-wrapper {
+  position: absolute;
+  top: 99%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 124px; /* outer width slightly more */
+  height: 34px; /* outer height slightly more */
+  background: white;
+  clip-path: polygon(2% 100%, 17% 0, 83% 0, 98% 100%);
+  display: flex;
+  align-items: flex-start; /* push child to top */
+  justify-content: center;
+}
+
+/* Inner trapezium (actual visible stand) */
+.wheel-stand {
+  width: 110px;
+  height: 30px;
+  background: #ff6c6a;
+  clip-path: polygon(0 100%, 15% 0, 85% 0, 100% 100%);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.spin-button,
+.edit-button {
+  flex-shrink: 0;
+  margin: 0; /* ✨ REMOVE margin-left and margin-right auto */
+}
+
+.spin-button {
+  height: 50px;
+  padding: 0 20px; /* Horizontal padding only */
+  background-color: #ff9e9d; /* your peach color */
+  color: #fffdfc;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-header {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.site-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Cloud Base */
+.static-cloud {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Animations */
+@keyframes floatUpDown1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatUpDown2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-35px);
+  }
+}
+
+@keyframes floatUpDown3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+.cloud-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* below header and wheel */
+  pointer-events: none;
+}
+
+/* Shared cloud styling */
+.static-cloud {
+  position: absolute;
+  opacity: 0.85;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Cloud-specific configs */
+.cloud-a {
+  width: 1500px;
+  top: -250px; /* Now this WILL work */
+  left: -500px;
+  animation-name: floatUpDown1;
+  animation-duration: 10s;
+}
+
+.cloud-b {
+  width: 1300px;
+  top: -170px;
+  right: -30%;
+  animation-name: floatUpDown2;
+  animation-duration: 12s;
+}
+
+.cloud-c {
+  width: 1000px;
+  bottom: 80px;
+  left: 20%;
+  animation-name: floatUpDown3;
+  animation-duration: 14s;
+}
+/* Cloud D – Bottom Right */
+.cloud-d {
+  width: 2000px;
+  bottom: -600px;
+  right: -60%;
+  animation-name: floatUpDown2;
+  animation-duration: 16s;
+  opacity: 80%;
+}
+
+/* Cloud E – Bottom Left */
+.cloud-e {
+  width: 2000px;
+  bottom: -500px;
+  left: -75%;
+  animation-name: floatUpDown3;
+  animation-duration: 18s;
+}
+.penne-dialog {
+  position: absolute;
+  right: 180px; /* shift slightly to balance wider box */
+  bottom: 500px; /* lift higher to account for taller box */
+  width: 400px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.4); /* translucent white */
+  border: 2px dashed #ff6c6a;
+  border-radius: 16px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #882e2e;
+  z-index: 6;
+  backdrop-filter: blur(4px);
+  text-align: center;
+  line-height: 1.4;
+}
+#typing-text {
+  white-space: pre-wrap;
+}
+canvas.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000; /* well above modal */
+  pointer-events: none;
+}
