@@ -383,21 +383,22 @@ body {
 
   /* MAIN LAYOUT */
   .main-container {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;     /* ✅ centers horizontally */
     justify-content: flex-start;
-    padding-top: 120px; /* push below header */
-    height: auto;       /* remove fixed 100% height */
+    padding-top: 120px;
+    height: auto;
   }
 
   /* WHEEL FIX */
   .wheel-wrapper {
-    width: 85vw;          /* fit inside screen */
-    height: 85vw;         /* keep it square */
+    width: 85vw;
+    height: 85vw;
     max-width: 360px;
     max-height: 360px;
-    margin: 0 auto 20px auto; /* center horizontally */
-    transform: translateX(-5%); /* nudge left */
+    margin: 0 auto 20px auto;
+    transform: none !important; /* ✅ no manual shifting */
   }
 
   .wheel-container {
