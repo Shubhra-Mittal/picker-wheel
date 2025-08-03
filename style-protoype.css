@@ -352,64 +352,12 @@ body {
 
 /* ===== Mobile Layout Overrides ===== */
 @media (max-width: 768px) {
-  body, html {
-    overflow-y: auto;   /* allow scroll since content is vertical */
-    overflow-x: hidden;
-  }
-
-  .main-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 120px; /* push below header */
-    height: auto;       /* remove 100% height constraint */
-  }
-
-  /* Wheel takes most of screen width */
-  .wheel-wrapper {
-    width: 90vw;
-    height: 90vw;  /* keep it square */
-    max-width: 400px;
-    max-height: 400px;
-    margin: 0 auto 20px auto;
-    transform: none !important; /* remove desktop shifting */
-  }
-
-  /* Toggle button below wheel */
-  .toggle-btn {
-    position: static;
-    transform: none;
-    margin: 10px auto;
-    display: block;
-    width: auto;
-    height: auto;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    text-align: center;
-  }
-
-  /* Edit panel shows below toggle */
-  .edit-panel {
-    position: static;
-    width: 90vw;
-    max-width: 400px;
-    height: auto;
-    margin: 15px auto;
-    transform: none !important; /* kill slide animation */
-    display: none; /* hidden by default */
-  }
-  .edit-panel.visible {
-    display: flex; /* just appears, no animation */
-  }
-}
-/* Mobile cleanup */
-@media (max-width: 768px) {
   html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* ✅ stop sideways scrolling */
+    overflow-x: hidden;  /* stop sideways scrolling */
+    overflow-y: auto;    /* allow vertical scroll */
   }
 
   /* HEADER FIX */
@@ -433,6 +381,15 @@ body {
     height: 26px;
   }
 
+  /* MAIN LAYOUT */
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 120px; /* push below header */
+    height: auto;       /* remove fixed 100% height */
+  }
+
   /* WHEEL FIX */
   .wheel-wrapper {
     width: 85vw;          /* fit inside screen */
@@ -440,18 +397,37 @@ body {
     max-width: 360px;
     max-height: 360px;
     margin: 0 auto 20px auto; /* center horizontally */
-    transform: none !important; /* remove desktop shifting */
+    transform: translateX(-5%); /* nudge left */
   }
 
   .wheel-container {
     margin: 0 auto;
   }
 
-  /* TOGGLE BUTTON under wheel */
+  /* TOGGLE BUTTON below wheel */
   .toggle-btn {
-    display: block;
+    position: static;
     margin: 10px auto;
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* EDIT PANEL shows below toggle */
+  .edit-panel {
+    position: static;
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    margin: 15px auto;
+    transform: none !important; /* no sliding */
+    display: none; /* hidden by default */
+  }
+  .edit-panel.visible {
+    display: flex; /* just appears */
   }
 }
-
-
