@@ -418,7 +418,7 @@ body {
     margin: 0;
     width: auto;
     height: auto;
-    padding: 10px 12px;        /* ✅ smaller button */
+    padding: 20px 6px;        /* ✅ smaller button */
     border-radius: 6px;
     font-size: 13px;
     text-align: center;
