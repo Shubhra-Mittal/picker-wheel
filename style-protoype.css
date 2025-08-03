@@ -400,6 +400,10 @@ body {
   margin: 0 auto 20px auto; /* true center */
   transform: none !important;
 }
+  .wheel-wrapper.centered {
+    transform: none !important;
+    margin: 0 auto 20px auto !important;
+  }
 
   .wheel-container {
     margin: 0 auto;
