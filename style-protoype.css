@@ -403,4 +403,55 @@ body {
     display: flex; /* just appears, no animation */
   }
 }
+/* Mobile cleanup */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* ✅ stop sideways scrolling */
+  }
+
+  /* HEADER FIX */
+  .site-header {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    grid-template-columns: auto 1fr auto; /* hamburger | title | icon */
+    align-items: center;
+  }
+
+  .site-title {
+    justify-self: center;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .user-icon {
+    justify-self: end;
+    width: 26px;
+    height: 26px;
+  }
+
+  /* WHEEL FIX */
+  .wheel-wrapper {
+    width: 85vw;          /* fit inside screen */
+    height: 85vw;         /* keep it square */
+    max-width: 360px;
+    max-height: 360px;
+    margin: 0 auto 20px auto; /* center horizontally */
+    transform: none !important; /* remove desktop shifting */
+  }
+
+  .wheel-container {
+    margin: 0 auto;
+  }
+
+  /* TOGGLE BUTTON under wheel */
+  .toggle-btn {
+    display: block;
+    margin: 10px auto;
+  }
+}
+
 
