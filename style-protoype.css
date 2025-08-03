@@ -398,7 +398,7 @@ body {
     max-width: 360px;
     max-height: 360px;
     margin: 0 auto 20px auto;
-  margin-left: -15px;       /* ✅ nudge left */
+    margin-left: -50px;       /* ✅ nudge left */
   }
 
   .wheel-container {
