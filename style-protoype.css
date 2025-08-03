@@ -411,18 +411,20 @@ body {
 
   /* TOGGLE BUTTON below wheel */
   .toggle-btn {
-    position: fixed;         /* ✅ stays fixed on screen */
-    bottom: 20px;            /* distance from bottom */
-    left: 50%;               /* center horizontally */
+    position: absolute;       /* ✅ anchor inside container */
+    top: calc(85vw + 140px);  /* just below wheel (85vw wheel + header padding) */
+    left: 50%;
     transform: translateX(-50%);
     margin: 0;
     width: auto;
     height: auto;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: 6px 14px;        /* ✅ smaller button */
+    border-radius: 6px;
+    font-size: 13px;
     text-align: center;
-    z-index: 50;             /* keep above panel */
+    z-index: 20;              /* above panel */
+    background: #8f84ed;
+    color: white;
   }
 
   /* EDIT PANEL shows below toggle */
@@ -434,7 +436,7 @@ body {
     margin: 15px auto;
     transform: none !important; /* no sliding */
     display: none; /* hidden by default */
-    margin-top: 20px;  
+    margin-top: 60px; 
   }
   .edit-panel.visible {
     display: flex; /* just appears */
