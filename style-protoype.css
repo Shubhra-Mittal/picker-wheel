@@ -416,9 +416,9 @@ body {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
-    width: 100px;
+    width: 75px;
     height: auto;
-    padding: 20px 6px;        /* ✅ smaller button */
+    padding: 15px 6px;        /* ✅ smaller button */
     border-radius: 6px;
     font-size: 13px;
     text-align: center;
