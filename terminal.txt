@@ -1,0 +1,4 @@
+> cd /Users/sm/Downloads/reward_picker
+> python3 -m http.server 8000
+
+address bar: http://localhost:8000
